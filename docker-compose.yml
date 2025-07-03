@@ -1,0 +1,36 @@
+# File: docker-compose.yml
+services:
+  shared-ui:
+    build:
+      context: ./apps/shared-ui
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./apps/shared-ui:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
+
+  api-gateway:
+    build:
+      context: ./apps/api-gateway
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./apps/api-gateway:/app
+      - /app/node_modules
+    ports:
+      - "4000:4000"
+    command: npm run dev
+
+  main-api:
+    build:
+      context: ./apps/main-api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./apps/main-api:/app
+      - /app/node_modules
+    ports:
+      - "4001:4001"
+    command: npm run dev
