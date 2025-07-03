@@ -26,7 +26,6 @@ coverage/
 *.lcov
 
 # Docker
-**/Dockerfile.dev
 docker-compose.override.yml
 docker-compose.debug.yml
 

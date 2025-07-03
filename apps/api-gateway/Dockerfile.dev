@@ -1,0 +1,12 @@
+# Dockerfile.dev
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Use nodemon or vite in the package.json scripts
+CMD ["npm", "run", "dev"]
